@@ -6,7 +6,7 @@
 // name
 function StepElement(props){
   let  classNames = props.active ? "active" : "";
-  return <li classNames={classNames}>
+  return <li classNames={classNames} onClick={() => props.onchange(props.idx - 1)}>
     {props.idx}
     Step {props.idx}
     {props.name}
@@ -18,5 +18,5 @@ function StepElement(props){
 // active_element
 // onchange
 export function StepList(props){
-  return props.steps.map((step,i) => <StepElement name={step} idx={i + 1} active={ props.active_elt === i} /> )
+  return props.steps.map((step,i) => <StepElement name={step} idx={i + 1} active={ props.active_elt === i} onchange={props.onchange}/> )
 } 

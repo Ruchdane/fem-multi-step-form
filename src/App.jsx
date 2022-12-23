@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { StepList } from './components/step';
+import { StepAction } from './components/step-action';
 import { StepCard } from './components/step-card';
 
 
@@ -8,6 +9,15 @@ const steps = ["Your info","Select plan","Add-ons","Summary"]
 function App() {
 
   const [active_step, set_active_step] = useState(0);
+  function go_back(){
+    set_active_step(active_step - 1);
+  }
+  function next_step(){
+    set_active_step(active_step + 1);
+  }
+  function confirm(){
+    set_active_step(active_step + 1);
+  }
   return (
     <>  
       <StepList steps={steps} active_elt={active_step} onchange={step => set_active_step(step)}/> 
@@ -61,8 +71,6 @@ function App() {
       +$2/mo
 
     </StepCard>
-    Go Back
-    Next Step
 
 
     <StepCard
@@ -76,20 +84,15 @@ function App() {
     Total (per month/year)
 
     </StepCard>
-    Go Back
-    Confirm
 
-    // -- Step 4 end --
-
-    // -- Step 5 start --
-
+  { active_step === 4 ?  <div>
     Thank you!
 
     Thanks for confirming your subscription! We hope you have fun 
     using our platform. If you ever need support, please feel free 
     to email us at support@loremgaming.com.
-
-    // -- Step 5 end --
+    </div> : null}
+    <StepAction idx={active_step} back={go_back} next={next_step} confirm={confirm}/>
       </>
   )
 }
