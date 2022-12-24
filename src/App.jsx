@@ -8,6 +8,7 @@ import { priceRate } from './util';
 import IconArcade  from "./assets/icons/icon-arcade.svg";
 import IconAdvanced from "./assets/icons/icon-advanced.svg";
 import IconPro from "./assets/icons/icon-pro.svg";
+import { AddonCard } from './components/addon-card';
 // import IconCheckmark from "./assets/icons/con-checkmark.svg";
 // import IconThankYou from "./assets/icons/con-thank-you.svg";
 
@@ -16,6 +17,11 @@ const plans = [
   {name: "Arcade",  price: 9 ,icon: IconArcade},
   {name: "Advanced",price: 12,icon: IconAdvanced},
   {name: "Pro",     price: 15, icon: IconPro}
+]
+const addons = [
+  {name: "Online service",       decription:"Access to multiplayer games", price:1},
+  {name: "Larger storage",       decription:"Extra 1TB of cloud save",     price:2},
+  {name: "Customizable Profile", decription:"Custom theme on your profile",price:2},
 ]
 function App() {
 
@@ -32,6 +38,14 @@ function App() {
   // rate: false(monthly) | true(yearly)
   const [rate, set_rate] = useState(false);
   const [selected_plan, set_selected_plan] = useState(0);
+  const [selected_addons,set_selected_addon] = useState([false,false,false])
+  function toggle_addon(i){
+    let tmp = [...selected_addons];
+    tmp[i] = !tmp[i];
+    console.log(tmp);
+    set_selected_addon(tmp);
+  }
+  
   return (
     <>  
       <StepList steps={steps} active_elt={active_step} onchange={step => set_active_step(step)}/> 
@@ -75,18 +89,15 @@ function App() {
       title="Pick add-ons"
       description="Add-ons help enhance your gaming experience."
     >
-      Online service
-      Access to multiplayer games
-      +{priceRate(1,rate)}
-
-      Larger storage
-      Extra 1TB of cloud save
-      +{priceRate(2,rate)}
-
-      Customizable Profile
-      Custom theme on your profile
-      +{priceRate(2,rate)}
-
+        {
+        addons.map((addon,i) => 
+          <AddonCard 
+            selected={selected_addons[i]}
+            onclick={() => toggle_addon(i)}
+            name={addon.name} 
+            decription={addon.decription} 
+            price={priceRate(addon.price,rate)}/>)
+      }
     </StepCard>
 
 
