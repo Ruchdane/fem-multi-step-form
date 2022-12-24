@@ -3,6 +3,7 @@ import './App.css'
 import { StepList } from './components/step';
 import { StepAction } from './components/step-action';
 import { StepCard } from './components/step-card';
+import { priceRate } from './util';
 
 
 const steps = ["Your info","Select plan","Add-ons","Summary"]
@@ -18,6 +19,8 @@ function App() {
   function confirm(){
     set_active_step(active_step + 1);
   }
+  // rate: false(monthly) | true(yearly)
+  const [rate, set_rate] = useState(false);
   return (
     <>  
       <StepList steps={steps} active_elt={active_step} onchange={step => set_active_step(step)}/> 
@@ -40,13 +43,13 @@ function App() {
       title="Select your plan"
       description="You have the option of monthly or yearly billing.">
       Arcade
-      $9/mo
+      {priceRate(9,rate)}
 
       Advanced
-      $12/mo
+      {priceRate(12,rate)}
 
       Pro
-      $15/mo
+      {priceRate(15,rate)}
 
       Monthly
       Yearly
@@ -60,15 +63,15 @@ function App() {
     >
       Online service
       Access to multiplayer games
-      +$1/mo
+      +{priceRate(1,rate)}
 
       Larger storage
       Extra 1TB of cloud save
-      +$2/mo
+      +{priceRate(2,rate)}
 
       Customizable Profile
       Custom theme on your profile
-      +$2/mo
+      +{priceRate(2,rate)}
 
     </StepCard>
 
