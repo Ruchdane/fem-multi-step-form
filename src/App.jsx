@@ -10,6 +10,7 @@ import IconAdvanced from "./assets/icons/icon-advanced.svg";
 import IconPro from "./assets/icons/icon-pro.svg";
 import { AddonCard } from './components/addon-card';
 import { Summary } from './components/summary';
+import { Switch } from './components/switch';
 // import IconCheckmark from "./assets/icons/con-checkmark.svg";
 // import IconThankYou from "./assets/icons/con-thank-you.svg";
 
@@ -80,11 +81,8 @@ function App() {
         <img src={plan.icon} alt={plan.icon.split("/")[-1]}/>
     </PlanCard>
       )}
-      Monthly
-      Yearly
+      <Switch checked={rate} toggle={() => set_rate(!rate)}/>
     </StepCard>
-
-
     <StepCard
       active={active_step == 2}
       title="Pick add-ons"
