@@ -8,11 +8,11 @@ import { priceRate } from './util';
 import IconArcade  from "./assets/icons/icon-arcade.svg";
 import IconAdvanced from "./assets/icons/icon-advanced.svg";
 import IconPro from "./assets/icons/icon-pro.svg";
+// import IconCheckmark from "./assets/icons/con-checkmark.svg";
+import IconThankYou from "./assets/icons/icon-thank-you.svg";
 import { AddonCard } from './components/addon-card';
 import { Summary } from './components/summary';
 import { Switch } from './components/switch';
-// import IconCheckmark from "./assets/icons/con-checkmark.svg";
-// import IconThankYou from "./assets/icons/con-thank-you.svg";
 
 const steps = ["Your info","Select plan","Add-ons","Summary"]
 export const plans = [
@@ -47,22 +47,30 @@ function App() {
     console.log(tmp);
     set_selected_addon(tmp);
   }
-  
+
+  function total(){
+    let total = plans[selected_plan].price;
+    for(let i = 0; i < selected_addons.length; i++)
+      total += selected_addons[i] ? addons[i].price : 0;
+    return total;
+  }
+  // TODO add input binding to name,email and phone
   return (
     <>  
       <StepList steps={steps} active_elt={active_step} onchange={step => set_active_step(step)}/> 
+      
       <StepCard
         active={active_step == 0}
         title="Personal info"
         description="Please provide your name, email address, and phone number.">
         Name
-        e.g. Stephen King
+        <input placeholder="e.g. Stephen King"/>
 
         Email Address
-        e.g. stephenking@lorem.com
+        <input placeholder="e.g. stephenking@lorem.com"/>
 
         Phone Number
-        e.g. +1 234 567 890
+        <input placeholder="e.g. +1 234 567 890"/>
       </ StepCard> 
 
     <StepCard
@@ -108,10 +116,13 @@ function App() {
     <Summary selected_plan={selected_plan} selected_addons={selected_addons} rate={rate}/>
 
     Total (per {rate ? "year"  :"month"})
+    {rate ? null  :"+"}
+    {priceRate(total(),rate)}
 
     </StepCard>
 
   { active_step === 4 ?  <div>
+        <img src={IconThankYou} alt='Thanks'/>
     Thank you!
 
     Thanks for confirming your subscription! We hope you have fun 
