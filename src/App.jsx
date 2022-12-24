@@ -9,16 +9,17 @@ import IconArcade  from "./assets/icons/icon-arcade.svg";
 import IconAdvanced from "./assets/icons/icon-advanced.svg";
 import IconPro from "./assets/icons/icon-pro.svg";
 import { AddonCard } from './components/addon-card';
+import { Summary } from './components/summary';
 // import IconCheckmark from "./assets/icons/con-checkmark.svg";
 // import IconThankYou from "./assets/icons/con-thank-you.svg";
 
 const steps = ["Your info","Select plan","Add-ons","Summary"]
-const plans = [
+export const plans = [
   {name: "Arcade",  price: 9 ,icon: IconArcade},
   {name: "Advanced",price: 12,icon: IconAdvanced},
   {name: "Pro",     price: 15, icon: IconPro}
 ]
-const addons = [
+export const addons = [
   {name: "Online service",       decription:"Access to multiplayer games", price:1},
   {name: "Larger storage",       decription:"Extra 1TB of cloud save",     price:2},
   {name: "Customizable Profile", decription:"Custom theme on your profile",price:2},
@@ -106,10 +107,9 @@ function App() {
     title="Finishing up"
     description="Double-check everything looks OK before confirming."
     >
+    <Summary selected_plan={selected_plan} selected_addons={selected_addons} rate={rate}/>
 
-    // -- Dynamically add subscription and add-on selections here --
-
-    Total (per month/year)
+    Total (per {rate ? "year"  :"month"})
 
     </StepCard>
 
