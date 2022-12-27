@@ -34,9 +34,6 @@ function App() {
   function next_step(){
     set_active_step(active_step + 1);
   }
-  function confirm(){
-    set_active_step(active_step + 1);
-  }
   // rate: false(monthly) | true(yearly)
   const [rate, set_rate] = useState(false);
   const [selected_plan, set_selected_plan] = useState(0);
@@ -58,7 +55,7 @@ function App() {
   return (
     <>  
       <StepList steps={steps} active_elt={active_step} onchange={step => set_active_step(step)}/> 
-      <form>
+      <form className="flex flex-col justify-between min-h-[70%] md:w-full">
       <StepCard
         active={active_step == 0}
         title="Personal info"
@@ -129,7 +126,7 @@ function App() {
     using our platform. If you ever need support, please feel free 
     to email us at support@loremgaming.com.
     </div> : null}
-    <StepAction idx={active_step} back={go_back} next={next_step} confirm={confirm}/>
+    <StepAction idx={active_step} back={go_back} next={next_step} confirm={next_step}/>
     </form>
       </>
   )
