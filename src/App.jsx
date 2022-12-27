@@ -58,7 +58,7 @@ function App() {
   return (
     <>  
       <StepList steps={steps} active_elt={active_step} onchange={step => set_active_step(step)}/> 
-      
+      <form>
       <StepCard
         active={active_step == 0}
         title="Personal info"
@@ -130,6 +130,7 @@ function App() {
     to email us at support@loremgaming.com.
     </div> : null}
     <StepAction idx={active_step} back={go_back} next={next_step} confirm={confirm}/>
+    </form>
       </>
   )
 }

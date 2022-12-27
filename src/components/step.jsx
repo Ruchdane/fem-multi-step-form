@@ -5,8 +5,9 @@
 // active
 // name
 function StepElement(props){
-  let  className = "p-2 w-8 h-8 self-center rounded-full flex items-center justify-center border border-primary" + (props.active ? " cursor-not-allowed  bg-light-gray" : " cursor-pointer text-white");
-  return <li className="flex md:gap-3 w-fit" onClick={() => props.onchange(props.idx - 1)}>
+  let cursor = props.active ? " cursor-not-allowed" : "cursor-pointer";
+  let  className = "p-2 w-8 h-8 self-center rounded-full flex items-center justify-center border border-primary" + (props.active ? " bg-light-gray" : " text-white");
+  return <li className={"flex md:gap-3 w-fit " + cursor} onClick={() => props.onchange(props.idx - 1)}>
     <div className={className}> 
       {props.idx} 
     </div> 
@@ -22,7 +23,7 @@ function StepElement(props){
 // active_element
 // onchange
 export function StepList(props){
-  return <nav className="bg-mobile md:bg-desktop bg-cover bg-no-repeat md:m-2 md:max-w-xs md:h-full">
+  return <nav className="bg-mobile h-40  md:bg-desktop bg-cover bg-no-repeat md:m-2 md:max-w-xs md:h-full">
     <ul className="flex gap-4 md:flex-col py-8 md:p-8 place-content-center ">
      {props.steps.map((step,i) => 
       <StepElement key={i} name={step} idx={i + 1} active={ props.active_elt === i} onchange={props.onchange}/> )}
