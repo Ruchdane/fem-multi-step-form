@@ -24,6 +24,8 @@ module.exports = {
       'primary':'hsl(229, 24%, 87%)',
       //pastel-blue 
       'second':'hsl(228, 100%, 84%)',
+      //purplish blue
+      'tertiary':'hsl(243, 100%, 62%)',
     },
     extend: {
       backgroundImage:{
