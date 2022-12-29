@@ -19,7 +19,7 @@ export function StepAction(props){
       <div className=" w-full bg-white p-4 flex flex-row-reverse justify-between">
         {props.idx < 3 ? <button className={"bg-marine-blue text-white " + btn } type="button"  onClick={props.next}> Next step </button> 
                       :  <button className={"bg-purplish-blue text-white " + btn } type="button" onClick={props.confirm}> Confirm </button>}
-        {props.idx > 0 ? <button className={btn} onClick={props.back}  type="button" > Go Back </button> : null}
+        {props.idx > 0 ? <button className={"text-cool-gray " + btn} onClick={props.back}  type="button" > Go Back </button> : null}
       </div>
   
 }
