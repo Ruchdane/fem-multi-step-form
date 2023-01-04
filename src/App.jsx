@@ -60,14 +60,22 @@ function App() {
         active={active_step == 0}
         title="Personal info"
         description="Please provide your name, email address, and phone number.">
-        Name
-        <input placeholder="e.g. Stephen King"/>
+          <div class="flex flex-col gap-8">
+            <div>
+              <label> Name </label>
+              <input type="text" placeholder="e.g. Stephen King"/>
+            </div>
 
-        Email Address
-        <input placeholder="e.g. stephenking@lorem.com"/>
+            <div>
+              <label> Email Address </label>
+              <input type="text" placeholder="e.g. stephenking@lorem.com"/>
+            </div>
 
-        Phone Number
-        <input placeholder="e.g. +1 234 567 890"/>
+            <div>
+              <label> Phone Number </label>
+              <input type="text" placeholder="e.g. +1 234 567 890"/>
+            </div>
+        </div>
       </ StepCard> 
 
     <StepCard
@@ -122,14 +130,17 @@ function App() {
 
     </StepCard>
 
-  { active_step === 4 ?  <div>
-        <img src={IconThankYou} alt='Thanks'/>
-    Thank you!
-
-    Thanks for confirming your subscription! We hope you have fun 
+    <StepCard
+        active={active_step == 4}>
+    <div class="flex flex-col justify-center items-center md:margin-auto">  
+    <img src={IconThankYou} alt='Thanks'/>
+    <span>Thank you!</span>
+    <span className="text-center text-cool-gray">Thanks for confirming your subscription! We hope you have fun 
     using our platform. If you ever need support, please feel free 
     to email us at support@loremgaming.com.
-    </div> : null}
+    </span> 
+   </div> 
+  </StepCard>
     <StepAction idx={active_step} back={go_back} next={next_step} confirm={next_step}/>
     </form>
       </>
