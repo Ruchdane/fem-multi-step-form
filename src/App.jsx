@@ -21,9 +21,9 @@ export const plans = [
   {name: "Pro",     price: 15, icon: IconPro}
 ]
 export const addons = [
-  {name: "Online service",       decription:"Access to multiplayer games", price:1},
-  {name: "Larger storage",       decription:"Extra 1TB of cloud save",     price:2},
-  {name: "Customizable Profile", decription:"Custom theme on your profile",price:2},
+  {name: "Online service",       description:"Access to multiplayer games", price:1},
+  {name: "Larger storage",       description:"Extra 1TB of cloud save",     price:2},
+  {name: "Customizable Profile", description:"Custom theme on your profile",price:2},
 ]
 function App() {
 
@@ -95,15 +95,17 @@ function App() {
       title="Pick add-ons"
       description="Add-ons help enhance your gaming experience."
     >
+      <div className="flex flex-col w-full h-full gap-2">
         {
         addons.map((addon,i) => 
           <AddonCard 
             selected={selected_addons[i]}
             onclick={() => toggle_addon(i)}
             name={addon.name} 
-            decription={addon.decription} 
+            description={addon.description} 
             price={priceRate(addon.price,rate)}/>)
       }
+    </div>
     </StepCard>
 
 

@@ -12,6 +12,19 @@
   -webkit-text-size-adjust: 100%;
 }
 
+.selectable-card {
+  @apply p-4 rounded-lg border;
+}
+
+.selectable-card.not-selected {
+  @apply border-primary cursor-pointer hover:border-tertiary;
+}
+
+.selectable-card.selected {
+  @apply border-tertiary bg-magnolia cursor-not-allowed;
+}
+
+
 body {
   font-family: 'Ubuntu', sans-serif;
   font-size: 16px;

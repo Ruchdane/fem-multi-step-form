@@ -7,7 +7,7 @@
 
 // Ex: <PlanCard title="Arcade" price={9} rate={false} selected={true}/>
 export function PlanCard(props){
-  return <div className={"flex md:flex-col md:justify-between md:w-full gap-2.5 p-4 rounded-lg border" + (props.selected ? " border-tertiary bg-magnolia cursor-not-allowed" : " border-primary cursor-pointer")} onClick={props.onclick}>
+  return <div className={"flex md:flex-col md:justify-between md:w-full gap-2.5 selectable-card" + (props.selected ? " selected" : " not-selected")} onClick={props.onclick}>
     <div> {props.children} </div>
     <div class="flex flex-col">
       <div> {props.title} </div>
