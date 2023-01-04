@@ -1,4 +1,4 @@
-import { addons, plans } from '../App';
+import { addons, plans} from '../App';
 import { priceRate } from '../util';
 // There are two component
 
@@ -7,9 +7,9 @@ import { priceRate } from '../util';
 // price
 // rate
 function SummaryElement(props){
-  return <div>
-    {props.name}
-    +{props.price}
+  return  <div className="flex justify-between align-center py-2">
+    <span className="text-cool-gray"> {props.name} </span>
+    <span> {props.price} </span>
   </div>
 }
 
@@ -20,15 +20,21 @@ function SummaryElement(props){
 // rate
 export function Summary(props){
   const plan = plans[props.selected_plan];
-  return <div>
-    {plan.name}{props.rate ? "Yearly" : "Monthly"}
-    <a href="#step2"> change </a>
-    { priceRate(plan.price,props.rate)}
-    <hr/>
+  return <div class="bg-magnolia p-4 rounded-lg">
+    <div className="flex justify-between align-center gap-2">
+      <div className="flex flex-col">
+        {plan.name} ({props.rate ? "Yearly" : "Monthly"})
+        <a href="#step2" className="underline text-cool-gray"> change </a>
+      </div>
+      <div>
+        { priceRate(plan.price,props.rate)}
+      </div>
+    </div>
+    <hr className="text-cool-gray"/>
     <ul>
       {
       addons.map((addon,i) => props.selected_addons[i] ? 
-        <SummaryElement name={addon.name} price={priceRate(addon.price,props.rate)}/>:null )
+        <SummaryElement name={addon.name} price={"+" + priceRate(addon.price,props.rate)}/>:null )
       }
     </ul>
   </div>

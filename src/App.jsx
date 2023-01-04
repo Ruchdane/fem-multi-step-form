@@ -115,10 +115,10 @@ function App() {
     description="Double-check everything looks OK before confirming."
     >
     <Summary selected_plan={selected_plan} selected_addons={selected_addons} rate={rate}/>
-
-    Total (per {rate ? "year"  :"month"})
-    {rate ? null  :"+"}
-    {priceRate(total(),rate)}
+    <div className="flex justify-between px-2 py-6">
+      <span> Total (per {rate ? "year"  :"month"})</span> 
+      <span class="text-blue"> {rate ? null  :"+"} {priceRate(total(),rate)}</span>
+     </div>
 
     </StepCard>
 
