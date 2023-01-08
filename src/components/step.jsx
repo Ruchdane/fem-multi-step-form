@@ -23,7 +23,7 @@ function StepElement(props){
 // active_element
 // onchange
 export function StepList(props){
-  return <nav className="bg-mobile h-40  md:bg-desktop bg-cover bg-no-repeat md:m-2 md:w-64 md:h-full">
+  return <nav className="bg-mobile h-40  md:bg-desktop bg-cover bg-no-repeat md:m-2 md:w-[318px] md:h-full">
     <ul className="flex gap-4 md:flex-col py-8 md:p-8 place-content-center ">
      {props.steps.map((step,i) => 
       <StepElement key={i} name={step} idx={i + 1} active={ props.active_elt === i} onchange={props.onchange}/> )}

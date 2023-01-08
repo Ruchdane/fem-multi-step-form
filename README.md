@@ -33,10 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
-
-## My process
+- [Live Site URL](https://fem-multi-step-form.vercel.app/)
+- [Solution URL](https://www.frontendmentor.io/solutions/multistep-form-HNa63nuUq_)
 
 ### Built with
 
@@ -69,7 +67,7 @@ Get the review and make a better solution
 ### Useful resources
 
 - [Mobile First - PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Responsive/Mobile_first) - MDN article on implementing layout using mobile first
-- [Adam Wathan - Tailwind CSS Best Practice Patterns ]
+- [Adam Wathan - Tailwind CSS Best Practice Patterns](https://www.youtube.com/watch?v=J_7_mnFSLDg)
 
 ## Author
 
