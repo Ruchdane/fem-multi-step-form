@@ -13,6 +13,7 @@ import IconThankYou from "./assets/icons/icon-thank-you.svg";
 import { AddonCard } from './components/addon-card';
 import { Summary } from './components/summary';
 import { Switch } from './components/switch';
+import { PersonalInfo } from './views/personal-info';
 
 const steps = ["Your info","Select plan","Add-ons","Summary"]
 export const plans = [
@@ -60,22 +61,7 @@ function App() {
         active={active_step == 0}
         title="Personal info"
         description="Please provide your name, email address, and phone number.">
-          <div class="flex flex-col gap-8">
-            <div>
-              <label> Name </label>
-              <input type="text" placeholder="e.g. Stephen King"/>
-            </div>
-
-            <div>
-              <label> Email Address </label>
-              <input type="text" placeholder="e.g. stephenking@lorem.com"/>
-            </div>
-
-            <div>
-              <label> Phone Number </label>
-              <input type="text" placeholder="e.g. +1 234 567 890"/>
-            </div>
-        </div>
+          <PersonalInfo/>
       </ StepCard> 
 
     <StepCard
