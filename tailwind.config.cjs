@@ -1,3 +1,4 @@
+const colors = require('tailwindcss/colors')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,7 +8,6 @@ module.exports = {
   theme: {
     colors:{
       /* Primary*/
-      'blue':"blue",
       'marine-blue':'hsl(213, 96%, 18%)',
       'purplish-blue':'hsl(243, 100%, 62%)',
       'pastel-blue':'hsl(228, 100%, 84%)',
@@ -18,7 +18,8 @@ module.exports = {
       'light-gray':'hsl(229, 24%, 87%)',
       'magnolia':'hsl(217, 100%, 97%)',
       'alabaster':'hsl(231, 100%, 99%)',
-      'white':'hsl(0, 0%, 100%)',
+      /* default */
+      ...colors
     },
     borderColor: {
       //light-gray 
@@ -27,6 +28,8 @@ module.exports = {
       'second':'hsl(228, 100%, 84%)',
       //purplish blue
       'tertiary':'hsl(243, 100%, 62%)',
+      /* default */
+      ...colors
     },
     extend: {
       backgroundImage:{
