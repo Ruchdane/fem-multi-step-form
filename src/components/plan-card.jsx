@@ -9,7 +9,7 @@
 export function PlanCard(props){
   return <div className={"flex md:flex-col md:justify-between md:w-full gap-2.5 selectable-card" + (props.selected ? " selected" : " not-selected")} onClick={props.onclick}>
     <div> {props.children} </div>
-    <div class="flex flex-col">
+    <div className="flex flex-col">
       <div> {props.title} </div>
       <div className="text-cool-gray"> {props.price} </div>
       <div className="text-sm"> {props.rate ? "2 month free" : null} </div>

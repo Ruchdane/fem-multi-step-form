@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import { PlanCard } from './components/plan-card';
 import { StepList } from './components/step';
 import { StepAction } from './components/step-action';
 import { StepCard } from './components/step-card';
@@ -12,8 +11,8 @@ import IconPro from "./assets/icons/icon-pro.svg";
 import IconThankYou from "./assets/icons/icon-thank-you.svg";
 import { AddonCard } from './components/addon-card';
 import { Summary } from './components/summary';
-import { Switch } from './components/switch';
 import { PersonalInfo } from './views/personal-info';
+import { SelectPlan } from './views/select-plan';
 
 const steps = ["Your info","Select plan","Add-ons","Summary"]
 export const plans = [
@@ -60,30 +59,14 @@ function App() {
       <StepCard
         active={active_step == 0}
         title="Personal info"
-        description="Please provide your name, email address, and phone number.">
-          <PersonalInfo/>
-      </ StepCard> 
-
+        description="Please provide your name, email address, and phone number"
+        children={<PersonalInfo/>}/>
+        
     <StepCard
       active={active_step == 1}
       title="Select your plan"
-      description="You have the option of monthly or yearly billing.">
-      <div className="flex flex-col w-full h-full md:flex-row gap-2">
-          {
-         plans.map((plan,i) =>
-          <PlanCard  
-            title={plan.name} 
-            price={priceRate(plan.price,rate)} 
-            rate={rate} 
-            selected={selected_plan === i} 
-            onclick={() => set_selected_plan(i)}
-          >
-          <img src={plan.icon} alt={plan.icon.split("/")[-1]}/>
-      </PlanCard>
-        )}
-      </div>
-      <Switch checked={rate} toggle={() => set_rate(!rate)}/>
-    </StepCard>
+      description="You have the option of monthly or yearly billing."
+          children={<SelectPlan {...{plans,rate,set_rate,selected_plan,set_selected_plan}} />}/>
     <StepCard
       active={active_step == 2}
       title="Pick add-ons"
